@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line2.c                                   :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: epalomak <epalomak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 14:07:09 by epalomak          #+#    #+#             */
-/*   Updated: 2021/05/07 17:44:11 by epalomak         ###   ########.fr       */
+/*   Updated: 2021/05/07 19:16:56 by epalomak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ int	get_next_line(const int fd, char **line)
 	static char	*str[MAX_FD];
 	char		*tmp;
 
+	if (!line || fd < 0 || read(fd, buf, 0) < 0 || fd > MAX_FD)
+		return (-1);
 	if (str[fd] == NULL)
 		str[fd] = ft_strnew(0);
-	if (!line || fd < 0 || fd > MAX_FD || !str[fd])
-		return (-1);
 	ret = 1;
 	while (ret > 0)
 	{
